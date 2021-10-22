@@ -1,20 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using OxyPlot;
 using OxyPlot.Series;
 using OxyPlot.Annotations;
+using OxyPlot.Wpf;
+using static ExtremumScan.MyMath;
 
 namespace ExtremumScan
 {
@@ -26,25 +16,34 @@ namespace ExtremumScan
         public MainWindow()
         {
             InitializeComponent();
-            MainViewModel model = new MainViewModel();
-        }
-    }
-
-    
-    public class MainViewModel
-    {
-        public MainViewModel()
-        {
-            this.MyModel = new PlotModel { Title = "Example 1" };
-            this.MyModel.Series.Add(new FunctionSeries(Math.Cos, 0, 10, 0.1, "cos(x)"));
+            OptimizationSettings settings = new OptimizationSettings()
+            {
+                func = Function1,
+                a = 0,
+                b = Math.PI,
+                eps = 0.00001,
+                max = true
+            };
+            double value = Optimization.Scanning(settings);
+            
+            //PlotView plotView = pvFunction;
+            //PlotModel plotModel = plotView.ActualModel;
+            /*model.MyModel.Series.Add(new FunctionSeries(Math.Cos, 0, 10, 0.1, "cos(x)"));
             var arrowAnnotation = new ArrowAnnotation
             {
                 StartPoint = new DataPoint(0, 0),
                 EndPoint = new DataPoint(10, 10)
             };
-            MyModel.Annotations.Add(arrowAnnotation);
+            model.MyModel.Annotations.Add(arrowAnnotation);*/
+        }
+    }
+ 
+    public class MainViewModel
+    {
+        public MainViewModel()
+        {
         }
 
-        public PlotModel MyModel { get; private set; }
+        public static PlotModel MyModel { get; private set; }
     }
 }
