@@ -1,33 +1,95 @@
 ﻿<Window x:Class="ExtremumScan.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
-        xmlns:oxy="http://oxyplot.org/wpf"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ExtremumScan"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="630" Width="653">
+		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+		xmlns:oxy="http://oxyplot.org/wpf"
+		xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:local="clr-namespace:ExtremumScan"
+		mc:Ignorable="d"
+		Title="Extremum Scanning Method" MinHeight="800" MinWidth="750" MaxWidth="1000" MaxHeight="900" Height="850" Width="800" WindowStyle="SingleBorderWindow">
     <Window.DataContext>
         <local:MainViewModel/>
     </Window.DataContext>
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="13*"/>
-            <ColumnDefinition Width="627*"/>
-            <ColumnDefinition Width="13*"/>
-        </Grid.ColumnDefinitions>
-        <Label Content="Label" HorizontalAlignment="Left" Margin="0,24,0,0" VerticalAlignment="Top" Height="26" Width="38" Grid.Column="1"/>
-        <Label Content="Label" HorizontalAlignment="Left" Margin="0,55,0,0" VerticalAlignment="Top" Height="26" Width="38" Grid.Column="1"/>
-        <Label Content="Label" HorizontalAlignment="Left" Margin="0,81,0,0" VerticalAlignment="Top" Height="26" Width="38" Grid.Column="1"/>
-        <CheckBox Content="CheckBox" HorizontalAlignment="Left" Margin="0,149,0,0" VerticalAlignment="Top" Height="15" Width="71" Grid.Column="1"/>
-        <TextBox HorizontalAlignment="Left" Margin="35,28,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="18" Grid.Column="1"/>
-        <TextBox HorizontalAlignment="Left" Margin="35,59,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="18" Grid.Column="1"/>
-        <TextBox HorizontalAlignment="Left" Margin="35,85,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="18" Grid.Column="1"/>
-        <RadioButton Content="RadioButton" HorizontalAlignment="Left" Margin="168,30,0,0" VerticalAlignment="Top" Height="15" Width="85" Grid.Column="1"/>
-        <RadioButton Content="RadioButton" HorizontalAlignment="Left" Margin="168,55,0,0" VerticalAlignment="Top" Height="15" Width="85" Grid.Column="1"/>
-        <RadioButton Content="RadioButton" HorizontalAlignment="Left" Margin="168,79,0,0" VerticalAlignment="Top" Height="15" Width="85" Grid.Column="1"/>
-        <RadioButton Content="RadioButton" HorizontalAlignment="Left" Margin="168,99,0,0" VerticalAlignment="Top" Height="15" Width="85" Grid.Column="1"/>
-        <CheckBox Content="CheckBox" HorizontalAlignment="Left" Margin="0,169,0,0" VerticalAlignment="Top" Height="15" Width="71" Grid.Column="1"/>
-        <oxy:PlotView x:Name="pvFunction" Model="{Binding MyModel}" Margin="0,277,0,10" Grid.Column="1"/>
+    <Grid Name="MainGrid">
+        <Grid x:Name="Settings" VerticalAlignment="Top" Background="#FFC1C1C1" Height="350">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="20"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <Rectangle Style="{DynamicResource RectangleBackground}" Grid.Column="2" Grid.Row="1" Margin="19,0,19,0" Grid.ColumnSpan="3" RadiusX="5" RadiusY="5">
+                <Rectangle.Effect>
+                    <DropShadowEffect BlurRadius="6" Color="#FFC5C3C3" Opacity="0.5" ShadowDepth="5" RenderingBias="Performance" Direction="315"/>
+                </Rectangle.Effect>
+            </Rectangle>
+            <Grid Grid.Column="3" HorizontalAlignment="Center" Margin="0,10,0,0" Grid.Row="1" VerticalAlignment="Top">
+                <Rectangle Style="{DynamicResource RectangleCategory}"/>
+                <Label Content="Промежуток" Margin="25,5,25,5" Foreground="White" FontSize="18"/>
+            </Grid>
+            <Rectangle Style="{DynamicResource RectangleBackground}" Grid.Row="1" Margin="19,0,20,0" Grid.ColumnSpan="3" RadiusX="5" RadiusY="5">
+                <Rectangle.Effect>
+                    <DropShadowEffect BlurRadius="6" Color="#FFC5C3C3" Opacity="0.5" ShadowDepth="5" RenderingBias="Performance" Direction="315"/>
+                </Rectangle.Effect>
+            </Rectangle>
+            <Grid Grid.Column="1" HorizontalAlignment="Center" Margin="0,10,0,0" Grid.Row="1" VerticalAlignment="Top">
+                <Rectangle Style="{DynamicResource RectangleCategory}" HorizontalAlignment="Center" Height="41" VerticalAlignment="Top" Width="154"/>
+                <Label Content="Функция" Margin="36,4,36,3" Foreground="White" FontSize="18"/>
+            </Grid>
+            <Rectangle Style="{DynamicResource RectangleBackground}" Grid.Column="4" Grid.Row="1" Margin="20,0,0,0" Grid.ColumnSpan="2" RadiusX="5" RadiusY="5">
+                <Rectangle.Effect>
+                    <DropShadowEffect BlurRadius="6" Color="#FFC5C3C3" Opacity="0.5" ShadowDepth="5" RenderingBias="Performance" Direction="315"/>
+                </Rectangle.Effect>
+            </Rectangle>
+            <Grid Grid.Column="5" HorizontalAlignment="Center" Margin="0,10,0,0" Grid.Row="1" VerticalAlignment="Top">
+                <Rectangle Style="{DynamicResource RectangleCategory}" HorizontalAlignment="Center" Height="41" VerticalAlignment="Top" Width="154"/>
+                <Label Content="Настройки" Foreground="White" FontSize="18" HorizontalAlignment="Center" Margin="0,4,0,9"/>
+            </Grid>
+            <Grid Grid.Column="3" Grid.Row="1" VerticalAlignment="Top" Margin="32,76,32,0" Height="89">
+                <Rectangle Fill="#FF6561BF" RadiusX="5" RadiusY="5"/>
+                <Slider x:Name="slA" Minimum="-50" Maximum="50" TickFrequency="5" IsSnapToTickEnabled="True" Background="#FF6561BF" TickPlacement="BottomRight" Height="24" VerticalAlignment="Top" HorizontalAlignment="Center" Width="144" Margin="0,10,0,0"/>
+                <TextBox x:Name="tbA" HorizontalAlignment="Center" Margin="0,61,0,0" TextWrapping="Wrap" Width="88" Text="0" Background="#FFCAC8F9" Height="18" VerticalAlignment="Top" />
+                <Label Content="Левая граница" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="White" Margin="0,32,0,0" FontSize="14"/>
+            </Grid>
+            <Grid Grid.Column="3" Grid.Row="1" VerticalAlignment="Top" Margin="32,200,32,0" Height="89">
+                <Rectangle Fill="#FF6561BF" RadiusX="5" RadiusY="5"/>
+                <Slider x:Name="slB" Minimum="-50" Maximum="50" TickFrequency="5" IsSnapToTickEnabled="True" Background="#FF6561BF" TickPlacement="BottomRight" Height="24" VerticalAlignment="Top" HorizontalAlignment="Center" Width="144" Margin="0,10,0,0"/>
+                <TextBox x:Name="tbB" HorizontalAlignment="Center" Margin="0,61,0,0" TextWrapping="Wrap" Width="88" Text="0" Background="#FFCAC8F9" Height="18" VerticalAlignment="Top" TextDecorations="{x:Null}" />
+                <Label Content="Правая граница" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="White" Margin="0,32,0,0" FontSize="14"/>
+            </Grid>
+            <CheckBox x:Name="cbVisualize" Content="CheckBox" Grid.Column="5" HorizontalAlignment="Left" Margin="33,92,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+            <TextBox x:Name="tbEps" Grid.Column="5" HorizontalAlignment="Left" Margin="84,130,0,0" Grid.Row="1" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="78"/>
+            <Label Content="Label" Grid.Column="5" HorizontalAlignment="Left" Margin="33,126,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+        </Grid>
+
+        <Grid x:Name="Plot" Background="#FFC1C1C1" Margin="0,350,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="20"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="20"/>
+            </Grid.RowDefinitions>
+            <Rectangle Grid.Column="1" Grid.Row="1" Fill="#FFECECEC" RadiusX="9" RadiusY="5">
+                <Rectangle.Effect>
+                    <DropShadowEffect BlurRadius="6" Color="#FFC5C3C3" Opacity="0.5" ShadowDepth="5" RenderingBias="Performance" Direction="315"/>
+                </Rectangle.Effect>
+            </Rectangle>
+            <oxy:PlotView x:Name="pvFunction" Model="{Binding MyModel}" Grid.Column="1" Grid.Row="1" Background="#FFECECEC" Margin="10,56,10,10"/>
+            <Grid Grid.Column="1" HorizontalAlignment="Center" Margin="0,10,0,0" Grid.Row="1" VerticalAlignment="Top">
+                <Rectangle Style="{DynamicResource RectangleCategory}" HorizontalAlignment="Center" Height="41" VerticalAlignment="Top" Width="154"/>
+                <Label Content="График" Foreground="White" FontSize="18" Margin="52,4,52,8"/>
+            </Grid>
+        </Grid>
     </Grid>
 </Window>
