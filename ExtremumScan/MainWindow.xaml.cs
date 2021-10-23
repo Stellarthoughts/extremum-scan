@@ -4,7 +4,7 @@ using OxyPlot;
 using OxyPlot.Series;
 using OxyPlot.Annotations;
 using OxyPlot.Wpf;
-using static ExtremumScan.MyMath;
+using static ExtremumScan.MathFunctions;
 
 namespace ExtremumScan
 {
@@ -13,10 +13,17 @@ namespace ExtremumScan
     /// </summary>
     public partial class MainWindow : Window
     {
+        public PlotSettings windowSettings;
         public MainWindow()
         {
             InitializeComponent();
-            OptimizationSettings settings = new OptimizationSettings()
+            windowSettings = new()
+            {
+
+            };
+            RemakePlot();
+            /*
+            OptimizationSettings settings = new()
             {
                 func = Function1,
                 a = 0,
@@ -24,8 +31,8 @@ namespace ExtremumScan
                 eps = 0.00001,
                 max = true
             };
-            double value = Optimization.Scanning(settings);
-            
+            double value = Optimization.Scanning(settings);*/
+
             //PlotView plotView = pvFunction;
             //PlotModel plotModel = plotView.ActualModel;
             /*model.MyModel.Series.Add(new FunctionSeries(Math.Cos, 0, 10, 0.1, "cos(x)"));
@@ -36,12 +43,23 @@ namespace ExtremumScan
             };
             model.MyModel.Annotations.Add(arrowAnnotation);*/
         }
+
+        private void RemakePlot()
+        {
+            PlotModel model = MainViewModel.MyModel;
+            model.Series.Clear();
+            model.Annotations.Clear();
+            model.InvalidatePlot(true);
+
+            model.Series.Add(new FunctionSeries(Function1, 0, 1, 0.1));
+        }
     }
  
     public class MainViewModel
     {
         public MainViewModel()
         {
+            MyModel = new PlotModel();
         }
 
         public static PlotModel MyModel { get; private set; }
