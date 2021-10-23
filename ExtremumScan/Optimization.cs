@@ -1,5 +1,5 @@
 ﻿using System;
-using static ExtremumScan.MyMath;
+using static ExtremumScan.MathFunctions;
 
 namespace ExtremumScan
 {
@@ -10,6 +10,7 @@ namespace ExtremumScan
         public double b;
         public double eps;
         public bool max;
+        public int state;
     }
 
     public static class Optimization
