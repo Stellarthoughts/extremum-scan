@@ -5,6 +5,8 @@ using OxyPlot.Series;
 using OxyPlot.Annotations;
 using OxyPlot.Wpf;
 using static ExtremumScan.MathFunctions;
+using System.Windows.Controls;
+using System.Collections.Generic;
 
 namespace ExtremumScan
 {
@@ -13,14 +15,15 @@ namespace ExtremumScan
     /// </summary>
     public partial class MainWindow : Window
     {
-        public PlotSettings windowSettings;
+        private FunctionSelector functionSelector;
+
         public MainWindow()
         {
             InitializeComponent();
-            windowSettings = new()
-            {
-
-            };
+            functionSelector = new(
+                new List<RadioButton> {rbFunc1, rbFunc2, rbFunc3, rbFunc4, rbFunc5, rbFunc6},
+                new List<Func<double,double>> {Function1, Function2, Function3, Function4}
+            );
             RemakePlot();
             /*
             OptimizationSettings settings = new()
@@ -54,7 +57,7 @@ namespace ExtremumScan
             model.Series.Add(new FunctionSeries(Function1, 0, 1, 0.1));
         }
     }
- 
+
     public class MainViewModel
     {
         public MainViewModel()
