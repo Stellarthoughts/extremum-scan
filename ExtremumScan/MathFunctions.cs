@@ -4,6 +4,7 @@ namespace ExtremumScan
 {
 	public static class MathFunctions
 	{
+		// Тригонометрические
 		public static double Function1(double x)
         {
 			return Math.Sin(x);
@@ -13,6 +14,7 @@ namespace ExtremumScan
 			return Math.Cos(x);
 		}
 
+		// Параболические
 		public static double Function3(double x)
 		{
 			return Math.Pow(x,2);
@@ -22,5 +24,9 @@ namespace ExtremumScan
 		{
 			return Math.Pow(x,3);
 		}
+
+		// Экспоненциальные
+
+		// Гиперболические
 	}
 }

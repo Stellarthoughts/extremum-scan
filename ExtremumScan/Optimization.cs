@@ -1,5 +1,5 @@
 ﻿using System;
-using static ExtremumScan.MathFunctions;
+using System.Collections.Generic;
 
 namespace ExtremumScan
 {
@@ -11,6 +11,15 @@ namespace ExtremumScan
         public double eps;
         public bool max;
         public int state;
+    }
+
+    public struct OptimizationResult
+    {
+        public double value;
+        public double argument;
+        public List<double> listValue;
+        public List<double> listArgument;
+        public List<double> listDistance;
     }
 
     public static class Optimization
