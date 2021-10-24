@@ -9,7 +9,7 @@
             <Setter Property="RadiusX" Value="10"/>
             <Setter Property="RadiusY" Value="10"/>
             <Setter Property="StrokeThickness" Value="0"/>
-            <Setter Property="Fill" Value="#FF3C279E"/>
+            <Setter Property="Fill" Value="#FF5839AC"/>
         </Style>
         <Style x:Key="RectangleBackground" TargetType="{x:Type Rectangle}">
             <Setter Property="Fill" Value="#FFECECEC"/>
