@@ -1,21 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Windows.Controls;
 
 namespace ExtremumScan
 {  
-    public class FunctionSelector
+    public class RBSelector<T>
     {
         private List<RadioButton> radioButtons;
-        private List<Func<double,double>> choices;
+        private List<T> choices;
 
-        public FunctionSelector(List<RadioButton> rb,List<Func<double, double>> ch)
+        public RBSelector(List<RadioButton> rb,List<T> ch)
         {
             radioButtons = rb;
             choices = ch;
         }
 
-        public Func<double,double> getChoice()
+        public T getChoice()
         {
             for(int i = 0; i < radioButtons.Count; i++)
             {
@@ -24,7 +23,7 @@ namespace ExtremumScan
                     return choices[i];
                 }
             }
-            return null;
+            return default(T);
         }
     }
 }
