@@ -10,7 +10,6 @@ namespace ExtremumScan
         public double b;
         public double eps;
         public bool max;
-        public int state;
     }
 
     public struct OptimizationResult
@@ -18,13 +17,14 @@ namespace ExtremumScan
         public double value;
         public double argument;
         public List<double> listValue;
-        public List<double> listArgument;
+        public List<double> listLeft;
+        public List<double> listRight;
         public List<double> listDistance;
     }
 
     public static class Optimization
     {    
-        public static double Scanning(OptimizationSettings settings)
+        public static OptimizationResult Scanning(OptimizationSettings settings)
         {
             Func<double,double> func = settings.func;
             double a = settings.a;
@@ -32,11 +32,20 @@ namespace ExtremumScan
             double eps = settings.eps;
             bool max = settings.max;
 
+            OptimizationResult result = new OptimizationResult();
+            result.listValue = new();
+            result.listLeft = new();
+            result.listRight = new();
+            result.listDistance = new();
+
+            result.listLeft.Add(settings.a);
+            result.listRight.Add(settings.b);
+
             double res = Double.PositiveInfinity;
             double prev;
 
-            int n = 10;
-            
+            double n = b - a;
+
             do
             {
                 prev = res;
@@ -45,7 +54,7 @@ namespace ExtremumScan
                 double min = a;
                 double fmin = (max ? -1 : 1) * func(a);
 
-                for (int i = 1; i <= n; i++)
+                for (int i = 1; i <= n - 1; i++)
                 {
                     double x = i * h + a;
                     double fvalue = (max ? -1 : 1) * func(x);
@@ -56,14 +65,30 @@ namespace ExtremumScan
                     }
                 }
 
-                b = min;
-                a = b - h;
+                if (min + h > b) 
+                {
+                    a = min - h;
+                    b = min;
+                }
+                else
+                {
+                    a = min;
+                    b = min + h;
+                }
 
                 res = min;
+
+                result.listValue.Add(fmin);
+                result.listLeft.Add(a);
+                result.listRight.Add(b);
+                result.listDistance.Add(h);
             }
             while (Math.Abs(prev - res) >= eps);
 
-            return res;
+            result.argument = res;
+            result.value = func(res);
+
+            return result;
         }
     }
 }

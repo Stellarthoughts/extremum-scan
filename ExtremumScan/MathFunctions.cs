@@ -14,19 +14,27 @@ namespace ExtremumScan
 			return Math.Cos(x);
 		}
 
-		// Параболические
+		// Экспоненциальные
+
 		public static double Function3(double x)
 		{
-			return Math.Pow(x,2);
+			return Math.Exp(x);
 		}
 
 		public static double Function4(double x)
 		{
-			return Math.Pow(x,3);
+			return Math.Exp(x) * x;
 		}
 
-		// Экспоненциальные
+		// Параболические
+		public static double Function5(double x)
+		{
+			return Math.Pow(x,2);
+		}
 
-		// Гиперболические
+		public static double Function6(double x)
+		{
+			return Math.Pow(x,3);
+		}
 	}
 }
