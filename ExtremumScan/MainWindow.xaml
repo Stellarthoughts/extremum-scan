@@ -6,7 +6,7 @@
 		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 		xmlns:local="clr-namespace:ExtremumScan"
 		mc:Ignorable="d"
-		Title="Extremum Scanning Method" MinHeight="800" MinWidth="750" MaxWidth="1000" MaxHeight="950" Height="900" Width="800" WindowStyle="SingleBorderWindow">
+		Title="Extremum Scanning Method" MinHeight="600" MinWidth="750" MaxWidth="1000" MaxHeight="950" Height="900" Width="800" WindowStyle="SingleBorderWindow">
     <Window.DataContext>
         <local:MainViewModel/>
     </Window.DataContext>
@@ -54,18 +54,18 @@
             </Grid>
             <Grid Grid.Column="5" Grid.Row="1" VerticalAlignment="Top" Margin="32,78,32,0" Height="230">
                 <Rectangle Fill="#FF6561BF" RadiusX="5" RadiusY="5"/>
-                <CheckBox x:Name="cbVisualize" Content="Алгоритм" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="14" Foreground="White" VerticalContentAlignment="Center" Margin="0,115,0,0"/>
+                <CheckBox x:Name="cbVisualize" Content="Алгоритм" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="14" Foreground="White" VerticalContentAlignment="Center" Margin="0,118,0,0" IsChecked="True"/>
                 <Label Content="Точность" HorizontalAlignment="Center" Margin="0,26,0,0" Foreground="White" FontSize="14" VerticalAlignment="Top"/>
                 <TextBox x:Name="tbEps" HorizontalAlignment="Center" Margin="0,55,0,0" Text="0.001" TextWrapping="Wrap" Width="78" Background="#FFCAC8F9" HorizontalContentAlignment="Center" Height="24" VerticalAlignment="Top" FontSize="14" VerticalContentAlignment="Center"/>
-                <RadioButton x:Name="rbFunc1_Copy" Content="Минимум" HorizontalAlignment="Center" Margin="0,175,0,0" VerticalAlignment="Top" FontSize="14" Background="White" Foreground="White" BorderBrush="{x:Null}" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Width="87"/>
-                <RadioButton x:Name="rbFunc1_Copy1" Content="Максимум" HorizontalAlignment="Center" Margin="0,198,0,0" VerticalAlignment="Top" FontSize="14" Background="White" Foreground="White" BorderBrush="{x:Null}" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
+                <RadioButton x:Name="rbExtMin" Content="Минимум" HorizontalAlignment="Center" Margin="0,175,0,0" VerticalAlignment="Top" FontSize="14" Background="White" Foreground="White" BorderBrush="{x:Null}" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Width="87" IsChecked="True"/>
+                <RadioButton x:Name="rbExtMax" Content="Максимум" HorizontalAlignment="Center" Margin="0,198,0,0" VerticalAlignment="Top" FontSize="14" Background="White" Foreground="White" BorderBrush="{x:Null}" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
                 <Label Content="Алгоритм" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="#FF80D66C" FontSize="14" FontWeight="Bold"/>
-                <Label Content="Визуализация" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="#FF80D66C" FontSize="14" Margin="0,81,0,0" FontWeight="Bold"/>
+                <Label Content="Визуализация" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="#FF80D66C" FontSize="14" Margin="0,89,0,0" FontWeight="Bold"/>
                 <Label Content="Экстремум" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="#FF80D66C" FontSize="14" Margin="0,146,0,0" FontWeight="Bold"/>
             </Grid>
             <Grid Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" Margin="32,78,32,0" Height="230">
                 <Rectangle Fill="#FF6561BF" RadiusX="5" RadiusY="5"/>
-                <RadioButton x:Name="rbFunc1" Content="Функция 1" HorizontalAlignment="Center" Margin="0,29,0,0" VerticalAlignment="Top" FontSize="14" Background="White" Foreground="White" BorderBrush="{x:Null}" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
+                <RadioButton x:Name="rbFunc1" Content="Функция 1" HorizontalAlignment="Center" Margin="0,29,0,0" VerticalAlignment="Top" FontSize="14" Background="White" Foreground="White" BorderBrush="{x:Null}" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" IsChecked="True"/>
                 <Label Content="Тригонометрическая" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="#FF80D66C" FontSize="14" FontWeight="Bold"/>
                 <RadioButton x:Name="rbFunc2" Content="Функция 2" HorizontalAlignment="Center" Margin="0,52,0,0" VerticalAlignment="Top" FontSize="14" Background="White" Foreground="White" BorderBrush="{x:Null}" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
                 <Label Content="Экспоненциальная" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="#FF80D66C" FontSize="14" Margin="0,75,0,0" FontWeight="Bold"/>
