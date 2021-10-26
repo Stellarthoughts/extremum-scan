@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Windows;
 using OxyPlot;
-using OxyPlot.Series;
-using OxyPlot.Annotations;
-using OxyPlot.Wpf;
-using static ExtremumScan.MathFunctions;
 using System.Windows.Controls;
 using System.Collections.Generic;
+using OxyPlot.Axes;
 
 namespace ExtremumScan
 {
@@ -15,7 +12,7 @@ namespace ExtremumScan
     /// </summary>
     public partial class MainWindow : Window
     {
-        private RBSelector<Func<double,double>> functionSelector;
+        private RBSelector<IFunction> functionSelector;
         private RBSelector<string> extremumSelector;
 
         public MainWindow()
@@ -23,7 +20,11 @@ namespace ExtremumScan
             InitializeComponent();
             functionSelector = new(
                 new List<RadioButton> {rbFunc1, rbFunc2, rbFunc3, rbFunc4, rbFunc5, rbFunc6},
-                new List<Func<double,double>> {Function1, Function2, Function3, Function4, Function5, Function6}
+                new List<IFunction> {
+                    new Function1(), new Function2(), 
+                    new Function3(), new Function4(), 
+                    new Function5(), new Function6()
+                    }
                 );
             extremumSelector = new(
                 new List<RadioButton> {rbExtMin, rbExtMax},

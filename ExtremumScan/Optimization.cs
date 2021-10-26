@@ -5,7 +5,7 @@ namespace ExtremumScan
 {
     public struct OptimizationSettings
     {
-        public Func<double,double> func;
+        public IFunction func;
         public double a;
         public double b;
         public double eps;
@@ -26,7 +26,7 @@ namespace ExtremumScan
     {    
         public static OptimizationResult Scanning(OptimizationSettings settings)
         {
-            Func<double,double> func = settings.func;
+            IFunction func = settings.func;
             double a = settings.a;
             double b = settings.b;
             double eps = settings.eps;
@@ -38,13 +38,14 @@ namespace ExtremumScan
             result.listRight = new();
             result.listDistance = new();
 
-            result.listLeft.Add(settings.a);
-            result.listRight.Add(settings.b);
-
             double res = Double.PositiveInfinity;
             double prev;
 
-            double n = b - a;
+            double n = Math.Pow(settings.eps, -1);
+
+            result.listValue.Add(func.Calculate(a) * (max ? -1 : 1));
+            result.listLeft.Add(a);
+            result.listRight.Add(b);
 
             do
             {
@@ -52,12 +53,12 @@ namespace ExtremumScan
 
                 double h = (b - a) / n;
                 double min = a;
-                double fmin = (max ? -1 : 1) * func(a);
+                double fmin = (max ? -1 : 1) * func.Calculate(a);
 
                 for (int i = 1; i <= n - 1; i++)
                 {
                     double x = i * h + a;
-                    double fvalue = (max ? -1 : 1) * func(x);
+                    double fvalue = (max ? -1 : 1) * func.Calculate(x);
                     if (fvalue < fmin)
                     {
                         fmin = fvalue;
@@ -76,17 +77,17 @@ namespace ExtremumScan
                     b = min + h;
                 }
 
-                res = min;
-
-                result.listValue.Add(fmin);
+                result.listValue.Add(fmin * (max ? -1 : 1));
                 result.listLeft.Add(a);
                 result.listRight.Add(b);
                 result.listDistance.Add(h);
+
+                res = min;
             }
             while (Math.Abs(prev - res) >= eps);
 
             result.argument = res;
-            result.value = func(res);
+            result.value = func.Calculate(res);
 
             return result;
         }

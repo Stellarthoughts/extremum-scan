@@ -2,39 +2,56 @@
 
 namespace ExtremumScan
 {
-	public static class MathFunctions
-	{
-		// Тригонометрические
-		public static double Function1(double x)
+	public interface IFunction
+    {
+		public double Calculate(double x);
+    }
+
+	// Тригонометрические
+	public class Function1 : IFunction
+    {
+        public double Calculate(double x)
         {
-			return Math.Sin(x);
+            return Math.Cos(x) + (1.0 / 2) * Math.Cos(x * 2);
         }
-		public static double Function2(double x)
+    }
+	public class Function2 : IFunction
+	{
+		public double Calculate(double x)
 		{
-			return Math.Cos(x);
+			return Math.Cos(Math.Pow(Math.E, x));
 		}
+	}
 
-		// Экспоненциальные
-
-		public static double Function3(double x)
+	// Экспоненциальные
+	public class Function3 : IFunction
+	{
+		public double Calculate(double x)
 		{
 			return Math.Exp(x);
 		}
-
-		public static double Function4(double x)
+	}
+	public class Function4 : IFunction
+	{
+		public double Calculate(double x)
 		{
 			return Math.Exp(x) * x;
 		}
+	}
 
-		// Параболические
-		public static double Function5(double x)
+	// Параболические
+	public class Function5 : IFunction
+	{
+		public double Calculate(double x)
 		{
-			return Math.Pow(x,2);
+			return Math.Pow(x, 2);
 		}
-
-		public static double Function6(double x)
+	}
+	public class Function6 : IFunction
+	{
+		public double Calculate(double x)
 		{
-			return Math.Pow(x,3);
+			return Math.Pow(x, 3);
 		}
 	}
 }

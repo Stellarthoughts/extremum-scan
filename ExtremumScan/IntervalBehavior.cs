@@ -5,7 +5,6 @@ namespace ExtremumScan
 {
     public partial class MainWindow : Window
     {
-
         private void slA_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             double val = slA.Value;
