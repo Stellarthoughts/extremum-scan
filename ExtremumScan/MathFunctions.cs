@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ExtremumScan
+namespace ExtremumScan.MathFunctions
 {
 	public interface IFunction
     {

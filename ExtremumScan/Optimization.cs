@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ExtremumScan.MathFunctions;
+using System;
 using System.Collections.Generic;
 
 namespace ExtremumScan
@@ -55,7 +56,7 @@ namespace ExtremumScan
                 double min = a;
                 double fmin = (max ? -1 : 1) * func.Calculate(a);
 
-                for (int i = 1; i <= n - 1; i++)
+                for (int i = 1; i <= n; i++)
                 {
                     double x = i * h + a;
                     double fvalue = (max ? -1 : 1) * func.Calculate(x);

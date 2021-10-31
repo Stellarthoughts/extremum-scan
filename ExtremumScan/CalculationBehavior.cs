@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ExtremumScan.MathFunctions;
+using System;
 using System.Globalization;
 using System.Windows;
 

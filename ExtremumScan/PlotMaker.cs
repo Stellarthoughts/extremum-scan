@@ -1,4 +1,5 @@
-﻿using OxyPlot;
+﻿using ExtremumScan.MathFunctions;
+using OxyPlot;
 using OxyPlot.Annotations;
 using OxyPlot.Series;
 using System;
