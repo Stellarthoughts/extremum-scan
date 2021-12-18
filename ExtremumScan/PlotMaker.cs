@@ -28,32 +28,34 @@ namespace ExtremumScan
 
             if (settings.algVisual)
             {
+                List<double> value = settings.optRes.listValue;
+                List<double> point = settings.optRes.listPoint;
                 List<double> left = settings.optRes.listLeft;
                 List<double> right = settings.optRes.listRight;
-                List<double> dist = settings.optRes.listDistance;
+                IFunction func = settings.func;
                 for (int i = 0; i < left.Count - 1; i++)
                 {
                     var lArrow = new ArrowAnnotation()
                     {
-                        StartPoint = new DataPoint(left[i], settings.optRes.listValue[i]),
-                        EndPoint = new DataPoint(left[i + 1], settings.optRes.listValue[i])
+                        StartPoint = new DataPoint(left[i], func.Calculate(left[i])),
+                        EndPoint = new DataPoint(left[i + 1], func.Calculate(left[i]))
                     };
                     var rArrow = new ArrowAnnotation()
                     {
-                        StartPoint = new DataPoint(right[i], settings.optRes.listValue[i]),
-                        EndPoint = new DataPoint(right[i + 1], settings.optRes.listValue[i])
+                        StartPoint = new DataPoint(right[i], func.Calculate(right[i])),
+                        EndPoint = new DataPoint(right[i + 1], func.Calculate(right[i]))
                     };
                     var lLine = new ArrowAnnotation()
                     {
-                        StartPoint = new DataPoint(left[i + 1], settings.optRes.listValue[i]),
-                        EndPoint = new DataPoint(left[i + 1], settings.optRes.listValue[i + 1]),
+                        StartPoint = new DataPoint(left[i + 1], func.Calculate(left[i])),
+                        EndPoint = new DataPoint(left[i + 1], func.Calculate(left[i + 1])),
                         HeadLength = 0,
                         HeadWidth = 0
                     };
                     var rLine = new ArrowAnnotation()
                     {
-                        StartPoint = new DataPoint(right[i + 1], settings.optRes.listValue[i]),
-                        EndPoint = new DataPoint(right[i + 1], settings.optRes.listValue[i + 1]),
+                        StartPoint = new DataPoint(right[i + 1], func.Calculate(right[i])),
+                        EndPoint = new DataPoint(right[i + 1], func.Calculate(right[i + 1])),
                         HeadLength = 0,
                         HeadWidth = 0
                     };
@@ -63,15 +65,19 @@ namespace ExtremumScan
                     model.Annotations.Add(rLine);
                 }
 
-                var valuesLine = new ArrowAnnotation()
+                model.Series.Add(new FunctionSeries(func.Calculate, left[left.Count - 1], right[right.Count - 1], settings.eps / 100)
                 {
-                    StartPoint = new DataPoint(left[left.Count - 1], settings.optRes.value),
-                    EndPoint = new DataPoint(left[left.Count - 1] + dist[dist.Count - 1], settings.optRes.value),
+                    Color = OxyColors.Red
+                });
+                /* var valuesLine = new ArrowAnnotation()
+                {
+                    StartPoint = new DataPoint(, settings.optRes.value),
+                    EndPoint = new DataPoint(, settings.optRes.value),
                     HeadLength = 0,
                     HeadWidth = 0,
                     Color = OxyColors.Red
                 };
-                model.Annotations.Add(valuesLine);
+                model.Annotations.Add(valuesLine); */
             }
 
             var pointExtremum = new PointAnnotation()

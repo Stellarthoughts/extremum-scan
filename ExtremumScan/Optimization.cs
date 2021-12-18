@@ -21,45 +21,47 @@ namespace ExtremumScan
         public List<double> listLeft;
         public List<double> listRight;
         public List<double> listDistance;
+
+        public List<double> listPoint;
     }
 
     public static class Optimization
-    {    
+    {
         public static OptimizationResult Scanning(OptimizationSettings settings)
         {
             IFunction func = settings.func;
             double a = settings.a;
             double b = settings.b;
             double eps = settings.eps;
-            bool max = settings.max;
 
             OptimizationResult result = new OptimizationResult();
             result.listValue = new();
             result.listLeft = new();
             result.listRight = new();
-            result.listDistance = new();
+            result.listPoint = new();
 
             double res = Double.PositiveInfinity;
             double prev;
 
-            double n = Math.Pow(settings.eps, -1);
+            double q = 10;
 
-            result.listValue.Add(func.Calculate(a) * (max ? -1 : 1));
+            result.listValue.Add(func.Calculate(a));
             result.listLeft.Add(a);
             result.listRight.Add(b);
+            result.listPoint.Add(a);
 
             do
             {
                 prev = res;
 
-                double h = (b - a) / n;
+                double deltaX = (b - a) / (q - 1);
                 double min = a;
-                double fmin = (max ? -1 : 1) * func.Calculate(a);
+                double fmin = func.Calculate(a);
 
-                for (int i = 1; i <= n; i++)
+                for (int i = 0; i <= q - 1; i++)
                 {
-                    double x = i * h + a;
-                    double fvalue = (max ? -1 : 1) * func.Calculate(x);
+                    double x = i * deltaX + a;
+                    double fvalue = func.Calculate(x);
                     if (fvalue < fmin)
                     {
                         fmin = fvalue;
@@ -67,21 +69,27 @@ namespace ExtremumScan
                     }
                 }
 
-                if (min + h > b) 
+                if(min == a)
                 {
-                    a = min - h;
+                    a = min;
+                    b = min + deltaX;
+                }
+                else if(min == b)
+                {
                     b = min;
+                    a = min - deltaX;
                 }
                 else
                 {
-                    a = min;
-                    b = min + h;
+                    a = min - deltaX;
+                    b = min + deltaX;
+                    deltaX = (b - a) / (q - 1);
                 }
 
-                result.listValue.Add(fmin * (max ? -1 : 1));
+                result.listPoint.Add(min);
+                result.listValue.Add(fmin);
                 result.listLeft.Add(a);
                 result.listRight.Add(b);
-                result.listDistance.Add(h);
 
                 res = min;
             }

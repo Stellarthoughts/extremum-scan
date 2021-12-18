@@ -10,8 +10,9 @@
     <Window.DataContext>
         <local:MainViewModel/>
     </Window.DataContext>
-    <Grid Name="MainGrid">
-        <Grid x:Name="Settings" VerticalAlignment="Top" Background="#FFC1C1C1" Height="337">
+    <Grid Name="MainGrid" Background="#FFC1C1C1">
+        <Rectangle Style="{DynamicResource RectangleCategory}" HorizontalAlignment="Center" Height="41" VerticalAlignment="Top" Width="484" Margin="0,10,0,0" Fill="{x:Null}"/>
+        <Grid x:Name="Settings" VerticalAlignment="Top" Height="385">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="20"/>
                 <ColumnDefinition/>
@@ -22,33 +23,34 @@
                 <ColumnDefinition Width="20"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="20"/>
-                <RowDefinition Height="1*"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition/>
+                <RowDefinition Height="0*"/>
             </Grid.RowDefinitions>
-            <Rectangle Style="{DynamicResource RectangleBackground}" Grid.Column="2" Grid.Row="1" Margin="19,0,19,0" Grid.ColumnSpan="3" RadiusX="5" RadiusY="5">
+            <Rectangle Style="{DynamicResource RectangleBackground}" Grid.Column="2" Grid.Row="1" Margin="19,0,19,3" Grid.ColumnSpan="3" RadiusX="5" RadiusY="5">
                 <Rectangle.Effect>
                     <DropShadowEffect BlurRadius="6" Color="#FFC5C3C3" Opacity="0.5" ShadowDepth="5" RenderingBias="Performance" Direction="315"/>
                 </Rectangle.Effect>
             </Rectangle>
-            <Grid Grid.Column="3" HorizontalAlignment="Center" Margin="0,10,0,0" Grid.Row="1" VerticalAlignment="Top">
+            <Grid Grid.Column="3" HorizontalAlignment="Center" Margin="0,10,0,0" Grid.Row="1" VerticalAlignment="Top" Height="44" Width="166">
                 <Rectangle Style="{DynamicResource RectangleCategory}"/>
                 <Label Content="Промежуток" Margin="25,5,25,5" Foreground="White" FontSize="18"/>
             </Grid>
-            <Rectangle Style="{DynamicResource RectangleBackground}" Grid.Row="1" Margin="19,0,20,0" Grid.ColumnSpan="3" RadiusX="5" RadiusY="5">
+            <Rectangle Style="{DynamicResource RectangleBackground}" Grid.Row="1" Margin="19,0,0,3" Grid.ColumnSpan="2" RadiusX="5" RadiusY="5">
                 <Rectangle.Effect>
                     <DropShadowEffect BlurRadius="6" Color="#FFC5C3C3" Opacity="0.5" ShadowDepth="5" RenderingBias="Performance" Direction="315"/>
                 </Rectangle.Effect>
             </Rectangle>
-            <Grid Grid.Column="1" HorizontalAlignment="Center" Margin="0,10,0,0" Grid.Row="1" VerticalAlignment="Top">
+            <Grid Grid.Column="1" HorizontalAlignment="Center" Margin="0,10,0,0" Grid.Row="1" VerticalAlignment="Top" Height="41" Width="154">
                 <Rectangle Style="{DynamicResource RectangleCategory}" HorizontalAlignment="Center" Height="41" VerticalAlignment="Top" Width="154"/>
                 <Label Content="Функция" Margin="36,4,36,3" Foreground="White" FontSize="18"/>
             </Grid>
-            <Rectangle Style="{DynamicResource RectangleBackground}" Grid.Column="4" Grid.Row="1" Margin="20,0,0,0" Grid.ColumnSpan="2" RadiusX="5" RadiusY="5">
+            <Rectangle Style="{DynamicResource RectangleBackground}" Grid.Column="5" Grid.Row="1" RadiusX="5" RadiusY="5" Margin="0,0,0,3">
                 <Rectangle.Effect>
                     <DropShadowEffect BlurRadius="6" Color="#FFC5C3C3" Opacity="0.5" ShadowDepth="5" RenderingBias="Performance" Direction="315"/>
                 </Rectangle.Effect>
             </Rectangle>
-            <Grid Grid.Column="5" HorizontalAlignment="Center" Margin="0,10,0,0" Grid.Row="1" VerticalAlignment="Top">
+            <Grid Grid.Column="5" HorizontalAlignment="Center" Margin="0,10,0,0" Grid.Row="1" VerticalAlignment="Top" Height="47" Width="154">
                 <Rectangle Style="{DynamicResource RectangleCategory}" HorizontalAlignment="Center" Height="41" VerticalAlignment="Top" Width="154"/>
                 <Label Content="Настройки" Foreground="White" FontSize="18" HorizontalAlignment="Center" Margin="0,4,0,9"/>
             </Grid>
@@ -67,13 +69,13 @@
                 <Rectangle Fill="#FF6561BF" RadiusX="5" RadiusY="5"/>
                 <RadioButton x:Name="rbFunc1" Content="cos(x)+1/2cos(2x)" HorizontalAlignment="Center" Margin="0,29,0,0" VerticalAlignment="Top" FontSize="14" Background="White" Foreground="White" BorderBrush="{x:Null}" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" IsChecked="True"/>
                 <Label Content="Тригонометрическая" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="#FF80D66C" FontSize="14" FontWeight="Bold"/>
-                <RadioButton x:Name="rbFunc2" Content="Функция 2" HorizontalAlignment="Center" Margin="0,52,0,0" VerticalAlignment="Top" FontSize="14" Background="White" Foreground="White" BorderBrush="{x:Null}" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
+                <RadioButton x:Name="rbFunc2" Content="cos(e^x)" HorizontalAlignment="Center" Margin="0,52,0,0" VerticalAlignment="Top" FontSize="14" Background="White" Foreground="White" BorderBrush="{x:Null}" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Width="128"/>
                 <Label Content="Экспоненциальная" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="#FF80D66C" FontSize="14" Margin="0,75,0,0" FontWeight="Bold"/>
-                <RadioButton x:Name="rbFunc3" Content="Функция 3" HorizontalAlignment="Center" Margin="0,104,0,0" VerticalAlignment="Top" FontSize="14" Background="White" Foreground="White" BorderBrush="{x:Null}" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
-                <RadioButton x:Name="rbFunc4" Content="Функция 4" HorizontalAlignment="Center" Margin="0,127,0,0" VerticalAlignment="Top" FontSize="14" Background="White" Foreground="White" BorderBrush="{x:Null}" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
+                <RadioButton x:Name="rbFunc3" Content="e^x" HorizontalAlignment="Center" Margin="0,104,0,0" VerticalAlignment="Top" FontSize="14" Background="White" Foreground="White" BorderBrush="{x:Null}" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Width="124"/>
+                <RadioButton x:Name="rbFunc4" Content="log(e^x)" HorizontalAlignment="Center" Margin="0,127,0,0" VerticalAlignment="Top" FontSize="14" Background="White" Foreground="White" BorderBrush="{x:Null}" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Width="124"/>
                 <Label Content="Параболическая" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="#FF80D66C" FontSize="14" Margin="0,150,0,0" FontWeight="Bold"/>
-                <RadioButton x:Name="rbFunc5" Content="Функция 5" HorizontalAlignment="Center" Margin="0,179,0,0" VerticalAlignment="Top" FontSize="14" Background="White" Foreground="White" BorderBrush="{x:Null}" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
-                <RadioButton x:Name="rbFunc6" Content="Функция 6" HorizontalAlignment="Center" Margin="0,202,0,0" VerticalAlignment="Top" FontSize="14" Background="White" Foreground="White" BorderBrush="{x:Null}" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
+                <RadioButton x:Name="rbFunc5" Content="x^2" HorizontalAlignment="Center" Margin="0,179,0,0" VerticalAlignment="Top" FontSize="14" Background="White" Foreground="White" BorderBrush="{x:Null}" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Width="124"/>
+                <RadioButton x:Name="rbFunc6" Content="x^3" HorizontalAlignment="Center" Margin="0,202,0,0" VerticalAlignment="Top" FontSize="14" Background="White" Foreground="White" BorderBrush="{x:Null}" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Width="124"/>
             </Grid>
             <Grid Grid.Column="3" Grid.Row="1" VerticalAlignment="Top" Margin="32,69,32,0" Height="96">
                 <Rectangle Fill="#FF6561BF" RadiusX="5" RadiusY="5"/>
@@ -87,16 +89,17 @@
                 <TextBox x:Name="tbB" HorizontalAlignment="Center" Margin="0,61,0,0" TextWrapping="Wrap" Width="88" Text="0" Background="#FFCAC8F9" Height="25" VerticalAlignment="Top" TextDecorations="{x:Null}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center" />
                 <Label Content="Правая граница" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="White" Margin="0,32,0,0" FontSize="14"/>
             </Grid>
+
         </Grid>
-        <Grid x:Name="Plot" Background="#FFC1C1C1" Margin="0,337,0,0">
+        <Grid x:Name="Plot" Margin="0,385,0,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="20"/>
                 <ColumnDefinition/>
                 <ColumnDefinition Width="20"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="20"/>
-                <RowDefinition Height="1*"/>
+                <RowDefinition Height="11"/>
+                <RowDefinition/>
                 <RowDefinition Height="20"/>
             </Grid.RowDefinitions>
             <Rectangle Grid.Column="1" Grid.Row="1" Fill="#FFECECEC" RadiusX="9" RadiusY="5">
@@ -104,12 +107,12 @@
                     <DropShadowEffect BlurRadius="6" Color="#FFC5C3C3" Opacity="0.5" ShadowDepth="5" RenderingBias="Performance" Direction="315"/>
                 </Rectangle.Effect>
             </Rectangle>
-            <oxy:PlotView x:Name="pvFunction" Model="{Binding MyModel}" Grid.Column="1" Grid.Row="1" Background="#FFECECEC" Margin="10,90,10,10" PanCursor="Hand" ZoomHorizontalCursor="SizeWE" ZoomRectangleCursor="SizeNWSE" ZoomVerticalCursor="SizeNS"/>
-            <Grid Grid.Column="1" HorizontalAlignment="Center" Margin="0,10,0,0" Grid.Row="1" VerticalAlignment="Top" Height="75">
-                <Rectangle Style="{DynamicResource RectangleCategory}" HorizontalAlignment="Left" Width="154"/>
-                <Label Content="График" Foreground="White" FontSize="18" HorizontalAlignment="Center" Width="70" Height="34" VerticalAlignment="Top" Margin="0,4,0,0"/>
-                <Button x:Name="btnCalculate" BorderThickness="0" Content="Построить" Margin="19,38,19,0" BorderBrush="{x:Null}" Foreground="White" FontSize="16" Click="BtnCalculate_Click" Background="#FF7756CF"/>
+            <oxy:PlotView x:Name="pvFunction" Model="{Binding MyModel}" Grid.Column="1" Grid.Row="1" Background="#FFECECEC" Margin="10,63,10,10" PanCursor="Hand" ZoomHorizontalCursor="SizeWE" ZoomRectangleCursor="SizeNWSE" ZoomVerticalCursor="SizeNS"/>
+            <Grid Grid.Column="1" HorizontalAlignment="Center" Margin="0,10,0,0" Grid.Row="1" VerticalAlignment="Top" Height="75" Width="210">
+                <Rectangle Style="{DynamicResource RectangleCategory}" HorizontalAlignment="Center" Width="210" Margin="0,0,0,38"/>
+                <Button x:Name="btnCalculate" BorderThickness="0" Content="Построить график" Margin="19,0,19,38" BorderBrush="{x:Null}" Foreground="White" FontSize="16" Click="BtnCalculate_Click" Background="#FF7756CF"/>
             </Grid>
         </Grid>
+        <Label Content="Нахождение экстремума методом сканнирования" Margin="0,2,0,0" Foreground="#FF5839AC" FontSize="22" HorizontalAlignment="Center" Width="556" Height="38" VerticalAlignment="Top" Background="{x:Null}" FontWeight="Bold"/>
     </Grid>
 </Window>

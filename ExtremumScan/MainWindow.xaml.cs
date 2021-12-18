@@ -1,9 +1,7 @@
-﻿using System;
-using System.Windows;
+﻿using System.Windows;
 using OxyPlot;
 using System.Windows.Controls;
 using System.Collections.Generic;
-using OxyPlot.Axes;
 using ExtremumScan.MathFunctions;
 
 namespace ExtremumScan

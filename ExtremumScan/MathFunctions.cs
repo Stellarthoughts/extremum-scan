@@ -7,6 +7,21 @@ namespace ExtremumScan.MathFunctions
 		public double Calculate(double x);
     }
 
+	public class FunctionNegative : IFunction
+    {
+		public IFunction function;
+
+		public FunctionNegative(IFunction function)
+        {
+			this.function = function;
+        }
+
+		public double Calculate(double x)
+        {
+			return -1 * function.Calculate(x);
+        }
+    }
+
 	// Тригонометрические
 	public class Function1 : IFunction
     {
@@ -35,7 +50,7 @@ namespace ExtremumScan.MathFunctions
 	{
 		public double Calculate(double x)
 		{
-			return Math.Exp(x) * x;
+			return Math.Log(Math.Exp(x));
 		}
 	}
 

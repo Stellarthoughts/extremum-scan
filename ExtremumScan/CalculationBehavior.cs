@@ -37,14 +37,15 @@ namespace ExtremumScan
 
             OptimizationSettings optSettings = new()
             {
-                func = functionSelected,
+                func = extremumModeSelected == "min" ? functionSelected : new FunctionNegative(functionSelected),
                 a = aSelected,
                 b = bSelected,
                 eps = epsSelected,
-                max = (extremumModeSelected != "min")
             };
 
             OptimizationResult optResult = Optimization.Scanning(optSettings);
+            if (extremumModeSelected == "max")
+                optResult.value *= -1;
 
             PlotSettings plotSettings = new()
             {
