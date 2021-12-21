@@ -27,14 +27,14 @@ namespace ExtremumScan.MathFunctions
     {
         public double Calculate(double x)
         {
-            return Math.Cos(x) + (1.0 / 2) * Math.Cos(x * 2);
+            return Math.Cos(x) + (1.0 / 2) * Math.Cos(x * 2) + Math.Sqrt(x);
         }
     }
 	public class Function2 : IFunction
 	{
 		public double Calculate(double x)
 		{
-			return Math.Cos(Math.Pow(Math.E, x));
+			return 2* Math.Sin(2*x) + (1.0/2) * Math.Cos(x / 2);
 		}
 	}
 
@@ -43,7 +43,7 @@ namespace ExtremumScan.MathFunctions
 	{
 		public double Calculate(double x)
 		{
-			return Math.Exp(x);
+			return Math.Cos(Math.Exp(x));
 		}
 	}
 	public class Function4 : IFunction
@@ -59,14 +59,14 @@ namespace ExtremumScan.MathFunctions
 	{
 		public double Calculate(double x)
 		{
-			return Math.Pow(x, 2);
+			return -Math.Pow(x, 2) + 2 * x + 5;
 		}
 	}
 	public class Function6 : IFunction
 	{
 		public double Calculate(double x)
 		{
-			return Math.Pow(x, 3);
+			return 10 * Math.Pow(x, 3) + Math.Pow(x,2);
 		}
 	}
 }
